@@ -13,7 +13,7 @@ package com.raven.springmvc.entites;
 import lombok.Data;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈〉
  *
  * @author Raven
@@ -29,4 +29,25 @@ public class User {
     private String age;
     private Address address;
 
+    public User(String username, String password, String email, String age) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", age=" + age +
+                ", address=" + address +
+                '}';
+    }
+
+
+    public User() {
+    }
 }

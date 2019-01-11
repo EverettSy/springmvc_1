@@ -5,6 +5,19 @@
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <body>
+
+<a href="springmvc/testSessionAttributes">Test SessionAttributes</a>
+<br><br>
+
+<a href="springmvc/testMap">Test Map</a>
+<br><br>
+
+<a href="springmvc/testModelAndView">Test ModelAndView</a>
+<br><br>
+
+<a href="springmvc/testServletAPI">Test ServletAPI</a>
+<br><br>
+
 <form action="springmvc/testPojo">
 	username：<input type="text" name="username"/>
 	<br>
