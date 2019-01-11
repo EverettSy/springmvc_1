@@ -1,4 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/
+<<<<<<< Updated upstream
 springmvc-1.iml
+=======
+springmvc_1.iml
+>>>>>>> Stashed changes
 target/
