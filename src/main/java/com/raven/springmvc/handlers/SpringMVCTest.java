@@ -10,9 +10,10 @@
  */
 package com.raven.springmvc.handlers;
 
+import com.raven.springmvc.entites.User;
+import javafx.scene.shape.VLineTo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -28,16 +29,102 @@ public class SpringMVCTest {
 
     private static final String SUCCESS = "success";
 
-    public String testAntPath(){
+    @RequestMapping("/testPojo")
+    private String testPojo(User user) {
+        System.out.println("testPojo:"+user);
+        return SUCCESS;
+    }
+
+    /**
+     * 了解：
+     *
+     * @param ssesionid
+     * @return
+     * @CookieValue:映射一个cookie值，属性同@RequestParm
+     */
+    @RequestMapping("/testCookieValue")
+    public String testCookieValue(@CookieValue("JSESSIONID") String ssesionid) {
+        System.out.println("testCookieValue:" + ssesionid);
+        return SUCCESS;
+    }
+
+    /**
+     * 用法同@RequestParam
+     *
+     * @param AL
+     * @return
+     */
+    @RequestMapping("/testRequestHeader")
+    public String testRequestHeader(@RequestHeader(value = "Accept-Language") String AL) {
+        System.out.println("testRequestHeader,Accept-Language" + AL);
+        return SUCCESS;
+    }
+
+    /**
+     * @RequestParam 来映射请求参数
+     * value 值即请求参数的参数名
+     * required 该参数是否必须，默认为true
+     * defaultValue请求参数的默认值
+     */
+    @RequestMapping(value = "/testRequestParam")
+    public String testRequestParam(@RequestParam(value = "username") String user,
+                                   @RequestParam(value = "age", required = false, defaultValue = "0") int age) {
+        System.out.println("testRequestParam,username: " + user + " age: " + age);
+        return SUCCESS;
+    }
+
+    /**
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/testRest/{id}", method = RequestMethod.GET)
+    public String testRest(@PathVariable("id") Integer id) {
+        System.out.println("testRest Get:" + id);
+        return SUCCESS;
+    }
+
+    @RequestMapping(value = "/testRest", method = RequestMethod.POST)
+    public String testRest() {
+        System.out.println("testRest Post");
+        return SUCCESS;
+    }
+
+    @RequestMapping(value = "/testRest/{id}", method = RequestMethod.DELETE)
+    public String testRestDelete(@PathVariable Integer id) {
+        System.out.println("testRest DELETE:" + id);
+        return SUCCESS;
+    }
+
+    @RequestMapping(value = "/testRest/{id}", method = RequestMethod.PUT)
+    public String testRestPut(@PathVariable Integer id) {
+        System.out.println("testRest PUT:" + id);
+        return SUCCESS;
+    }
+
+    /**
+     * @param id
+     * @return
+     * @PathVariable 可以来映射URL中占位符到目标方法的参数中。
+     */
+    @RequestMapping("/testPathVariable/{id}")
+    public String testPathVariable(@PathVariable("id") Integer id) {
+        System.out.println("testPathVariable:" + id);
+        return SUCCESS;
+    }
+
+    @RequestMapping("/testAntPath/*/abc")
+    public String testAntPath() {
         System.out.println("testAntPath");
         return SUCCESS;
 
     }
+
     /**
      * 了解：可以使用params 和headers来更加精确的映射请求,params 和headers支持简单的表达式
+     *
      * @return
      */
-    @RequestMapping(value = "testParamsAndHeaders", params = {"username", "age!=10"},headers = {"Accept-Language=en-US,zh;q=0.9"})
+    @RequestMapping(value = "testParamsAndHeaders", params = {"username", "age!=10"}, headers = {"Accept-Language=en-US,zh;q=0.9"})
     public String testParamsAndHeaders() {
         System.out.println("testParamsAndHeaders");
         return SUCCESS;
