@@ -15,7 +15,7 @@
         http://www.springframework.org/schema/task
         http://www.springframework.org/schema/task/spring-task-4.2.xsd">
 
-<!--配置自动扫描的包-->
+    <!--配置自动扫描的包-->
     <context:component-scan base-package="com.raven.springmvc.handlers"/>
 
     <!--配置视图解析器：如何把handler方法返回值解析为实际的物理视图-->
@@ -26,6 +26,10 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!--配置国际化资源-->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="i18n"></property>
+    </bean>
 
 
 </beans>

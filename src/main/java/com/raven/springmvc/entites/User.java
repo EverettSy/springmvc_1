@@ -23,13 +23,23 @@ import lombok.Data;
 @Data
 public class User {
 
+
+    private Integer id;
     private String username;
     private String password;
     private String email;
-    private String age;
+    private int age;
     private Address address;
 
-    public User(String username, String password, String email, String age) {
+    public User(String username, String password, String email, int age) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.age = age;
+    }
+
+    public User(Integer id, String username, String password, String email, int age) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -39,14 +49,13 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "username='" + username + '\'' +
+                "id=" + id +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", age=" + age +
-                ", address=" + address +
+                ", age='" + age + '\'' +
                 '}';
     }
-
 
     public User() {
     }
