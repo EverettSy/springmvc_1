@@ -26,10 +26,21 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!-- 配置视图解析器 BeanNameViewResolver解析器：使用使徒的名字来解析视图-->
+    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+        <!-- 通过order 属性来定义视图解析器的优先级，order值越小优先级越高-->
+        <property name="order" value="100"></property>
+    </bean>
+
     <!--配置国际化资源-->
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="i18n"></property>
     </bean>
 
+    <!-- 配置直接转发的页面-->
+    <!-- 可以直接响应转发的页面，而无需在经过Handler的方法-->
+    <mvc:view-controller path="/success" view-name="success"/>
 
+    <!-- 在实际开发中通常都需要配置mvc:annotation-driven 标签-->
+    <mvc:annotation-driven></mvc:annotation-driven>
 </beans>

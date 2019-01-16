@@ -31,15 +31,21 @@ import java.util.Map;
  * @create 2019/1/3
  * @since 1.0.0
  */
-@SessionAttributes(value = {"user"},types = {String.class})
+@SessionAttributes(value = {"user"}, types = {String.class})
 @RequestMapping("/springmvc")
 @Controller
 public class SpringMVCTest {
 
     private static final String SUCCESS = "success";
 
+    @RequestMapping("/testView")
+    public String testView() {
+        System.out.println("testView");
+        return "helloView";
+    }
+
     @RequestMapping("/testViewAndViewResolver")
-    public String testViewAndViewResolver(){
+    public String testViewAndViewResolver() {
         System.out.println("testViewAndViewResolver");
         return SUCCESS;
     }
@@ -49,6 +55,7 @@ public class SpringMVCTest {
      * 2. @ModelAttribute 注解也可以来修饰目标方法POJO类型的入参，其value属性值有如下作用
      * 1). SpringMVC 会使用value 属性值在在implicitModel中查找对应的对象，若存在则会直接传入目标方法的入参中，
      * 2). SpringMVC 会————value为key,POJO 类型的对象为value，存入到request中。
+     *
      * @param id
      * @param map
      */
@@ -59,7 +66,7 @@ public class SpringMVCTest {
         if (id != null) {
             //模拟从数据库中获取数据
             User user = new User(1, "Raven", "12345", "sy7509977423@163.com", 12);
-            System.out.println("从数据库中获取一个对象："+user);
+            System.out.println("从数据库中获取一个对象：" + user);
 
             map.put("user", user);
 
@@ -72,24 +79,25 @@ public class SpringMVCTest {
      * 1. 执行@ModelAttribute 修饰的方法：从数据库中取出对象,把对象放入Map中.键为：user
      * 2. SpringMVC 从Map 中取出User对象，并把表单的请求参数赋给该User对象的对应属性。
      * 3. SpringMVC 把上述对象传入目标方法的参数。
-     *
+     * <p>
      * 注意：@ModelAttribute修饰的方法中年，放入到 Map时的键需要和目标方法入参类型的第一个字母小写的字符串一致。
-     *
+     * <p>
      * SpringMVC 确定目标方法POJO类型入参的过程
      * 1. 确定一个key:
      * 1). 若目标方法的POJO的参数木有使用@ModelAttribute 作为修饰，则key 为POJO类名第一个字母的小写
      * 2). 若使用了@ModelAttribute 来修饰，则key为@ModelAttribute注解的value属性值
      * 2. 在implicitModel 中查找key对应的对象，若存在，则作为入参传入
      * 1). 若在 @ModelAttribute 标记的方法中在Map 中保存过，且key和1确定的key一致，则会获取到。
-     *
+     * <p>
      * 3. 在implicitModel 中不存在key对应的对象，则检查当前的Handler是否使用@SessionAttributes 注解修饰,
      * 若使用了该注解，且@SessionAttributes 注解的value 属性值中包含了key,则会从HttpSession中获取
      * key所对应的value 值，若存在则直接传入到目标方法的入参中，若不存在则抛出异常
      * 4. 若handler 没有标识@SessionAttributes 注解或@SessionAttributes注解的value值中不包含key,则会
      * 通过反射来创建POJO类型的参数，传入为目标方法的参数
      * 5. SpringMVC 会把key POJO类型的对象 保存到impicitModel中，进而会保存到request中。
-     *
+     * <p>
      * 源码分析流程
+     *
      * @param user
      * @return
      */
