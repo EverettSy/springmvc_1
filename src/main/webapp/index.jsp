@@ -6,6 +6,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <body>
 
+<a href="springmvc/testRedirect">Test Redirect</a>
+<br><br>
+
 <a href="springmvc/testView">Test View</a>
 <br><br>
 
