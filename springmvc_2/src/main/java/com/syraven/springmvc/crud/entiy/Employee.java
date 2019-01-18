@@ -23,8 +23,22 @@ import lombok.Data;
 @Data
 public class Employee {
 
-    private int id;
+    private Integer id;
     private String lastName;
     private String email;
-    private String gender;
+    private Integer gender;
+    private Department department;
+
+    public Employee(Integer id, String lastName, String email, Integer gender, Department department) {
+        this.id = id;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.department = department;
+    }
+
+    public Employee(){
+
+    }
+
 }

@@ -23,7 +23,11 @@ import lombok.Data;
 @Data
 public class Department {
 
-    private int id;
+    private Integer id;
     private String departmentName;
-    
+
+    public Department(Integer id, String departmentName) {
+        this.id = id;
+        this.departmentName = departmentName;
+    }
 }
