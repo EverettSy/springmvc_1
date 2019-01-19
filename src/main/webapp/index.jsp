@@ -1,10 +1,38 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOTYPE html PUBLIC "-// W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <body>
+
+<a href="springmvc/testRedirect">Test Redirect</a>
+<br><br>
+
+<a href="springmvc/testView">Test View</a>
+<br><br>
+
+<a href="springmvc/testViewAndViewResolver">Test ViewAndViewResolver</a>
+<br><br>
+
+
+<!--
+   摸你修改操作
+   1. 原始数据： 1，Tom,123456,sy759770423@163.com,12
+   2. 密码不能 被修改
+   3. 表单回显，模拟操作直接在表单填写对应的属性值
+	   -->
+
+<form action="springmvc/testModelAttribute" method="post">
+	<input type="hidden" name="id" value="1"/>
+	username: <input type="text" name="username" value="Raven"/>
+	<br>
+	email: <input type="text" name="email" value="sy759770423@163.com"/>
+	<br>
+	age: <input type="text" name="age" value="12">
+	<br>
+	<input type="submit" value="Submit">
+</form>
 
 <a href="springmvc/testSessionAttributes">Test SessionAttributes</a>
 <br><br>
