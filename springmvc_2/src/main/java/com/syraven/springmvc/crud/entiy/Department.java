@@ -26,8 +26,20 @@ public class Department {
     private Integer id;
     private String departmentName;
 
-    public Department(Integer id, String departmentName) {
+    public Department(int id, String departmentName) {
         this.id = id;
         this.departmentName = departmentName;
+    }
+
+    public Department(){
+
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", departmentName='" + departmentName + '\'' +
+                '}';
     }
 }
