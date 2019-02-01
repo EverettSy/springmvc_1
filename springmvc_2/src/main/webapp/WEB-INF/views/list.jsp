@@ -23,10 +23,24 @@
 	   2.解决：
 	   在SpringMVC的配置文件中配置
 	   <mvc:default-servlet-handler/>
-	--%
-	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	--%>
+	<script src="scripts/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$(".delete").click(function () {
+			    var href = $(this).attr("href");
+				$("form").attr("action",href).submit();
+			    return false;
+            });
+        })
+	</script>
 </head>
 <body>
+
+	<form action="" method="post">
+		<input type="hidden" name="_method" value="DELETE">
+	</form>
+
 	<c:if test="${empty requestScope.employeeMap}">
 		没有任何员工信息
 	</c:if>
@@ -42,7 +56,7 @@
 				<th>Delete</th>
 			</tr>
 			
-			<c:forEach items="${requestScope.employees}" var="emp">
+			<c:forEach items="${requestScope.employeeMap}" var="emp">
 				<tr>
 					<td>${emp.id}</td>
 					<td>${emp.lastName}</td>
@@ -50,7 +64,7 @@
 					<td>${emp.gender == 0 ? 'Female':'Male'}</td>
 					<td>${emp.department.departmentName}</td>
 					<td><a href="">Edit</a> </td>
-					<td><a href="emp/${emp.id}">Delete</a> </td>
+					<td><a class="delete" href="emp/${emp.id}">Delete</a> </td>
 					
 			</c:forEach>
 		</table>
