@@ -63,8 +63,8 @@
 					<td>${emp.email}</td>
 					<td>${emp.gender == 0 ? 'Female':'Male'}</td>
 					<td>${emp.department.departmentName}</td>
-					<td><a href="">Edit</a> </td>
-					<td><a class="delete" href="emp/${emp.id}">Delete</a> </td>
+					<td><a href="emp/${emp.id}">修改</a> </td>
+					<td><a class="delete" href="emp/${emp.id}">删除</a> </td>
 					
 			</c:forEach>
 		</table>
