@@ -17,6 +17,13 @@
 	<title>Title</title>
 </head>
 <body>
+
+	<form action="testConversionServiceConverer" method="post">
+		<!-- lastname-email-gender-department.id 例如： GG-gg@163.com-0-105 -->
+		Employee: <input type="text" name="employee"/>
+		<input type="submit" value="Submit">
+	</form>
+
 <%--
  1.为什么使用form标签呢？
  可以快速快速进行
@@ -53,6 +60,14 @@
 	<br>
 	Department: <form:select path="department.id" items="${departments}" itemLabel="departmentName" itemValue="id"/>
 	<br>
+	
+	<!--
+	   1.数据类型转换
+	   2.数据类型格式化
+	   3.数据校验。
+	-->
+	
+	<%--Birth: <form:input path="birth"/>--%>
 	<input type="submit" value="Submit">
 </form:form>
 </body>

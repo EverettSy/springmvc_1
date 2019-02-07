@@ -12,8 +12,9 @@ package com.syraven.springmvc.crud.entiy;
 
 import lombok.Data;
 
+
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈〉
  *
  * @author Raven
@@ -28,6 +29,7 @@ public class Employee {
     private String email;
     private Integer gender;
     private Department department;
+//    private Date birth;
 
     public Employee(Integer id, String lastName, String email, Integer gender, Department department) {
         this.id = id;
@@ -35,20 +37,12 @@ public class Employee {
         this.email = email;
         this.gender = gender;
         this.department = department;
+
     }
 
     public Employee(){
 
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", gender=" + gender +
-                ", department=" + department +
-                '}';
-    }
+
 }
