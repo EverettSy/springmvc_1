@@ -11,6 +11,10 @@
 package com.syraven.springmvc.crud.entiy;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
+
+import java.util.Date;
 
 
 /**
@@ -29,7 +33,12 @@ public class Employee {
     private String email;
     private Integer gender;
     private Department department;
-//    private Date birth;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birth;
+
+    @NumberFormat(pattern = "#,###,###.#")
+    private float salary;
 
     public Employee(Integer id, String lastName, String email, Integer gender, Department department) {
         this.id = id;
@@ -40,7 +49,7 @@ public class Employee {
 
     }
 
-    public Employee(){
+    public Employee() {
 
     }
 

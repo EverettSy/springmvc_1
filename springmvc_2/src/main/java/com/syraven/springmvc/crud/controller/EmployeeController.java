@@ -15,6 +15,8 @@ import com.syraven.springmvc.crud.dao.EmployeeDao;
 import com.syraven.springmvc.crud.entiy.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -88,7 +90,17 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping(value = "/emp", method = RequestMethod.POST)
-    public String save(Employee employee) {
+    public String save(Employee employee, BindingResult result) {
+        System.out.println("save:"+ employee);
+
+        if (result.getErrorCount() > 0){
+            System.out.println("出错了");
+
+            for (FieldError error : result.getFieldErrors()){
+                System.out.println(error.getField()+":"+error.getDefaultMessage());
+            }
+        }
+
         employeeDao.save(employee);
         return "redirect:/emps";
     }
@@ -105,4 +117,9 @@ public class EmployeeController {
         map.put("employeeMap", employeeDao.getAll());
         return "list";
     }
+
+   /* @InitBinder
+    public void initBinder(WebDataBinder binder){
+        binder.setDisallowedFields("lastName");
+    }*/
 }
