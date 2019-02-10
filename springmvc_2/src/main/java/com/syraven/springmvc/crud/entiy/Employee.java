@@ -11,9 +11,12 @@
 package com.syraven.springmvc.crud.entiy;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
+import javax.validation.constraints.Past;
 import java.util.Date;
 
 
@@ -29,11 +32,16 @@ import java.util.Date;
 public class Employee {
 
     private Integer id;
+
+    @NotEmpty
     private String lastName;
+
+    @Email
     private String email;
     private Integer gender;
     private Department department;
 
+    @Past
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birth;
 

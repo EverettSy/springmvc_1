@@ -19,6 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 /**
@@ -48,6 +49,7 @@ public class EmployeeController {
 
     /**
      * 修改操作
+     *
      * @param employee
      * @return
      */
@@ -60,6 +62,7 @@ public class EmployeeController {
 
     /**
      * 修改回显
+     *
      * @param id
      * @param map
      * @return
@@ -90,15 +93,18 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping(value = "/emp", method = RequestMethod.POST)
-    public String save(Employee employee, BindingResult result) {
-        System.out.println("save:"+ employee);
+    public String save(@Valid Employee employee, BindingResult result, Map<String, Object> map) {
+        System.out.println("save:" + employee);
 
-        if (result.getErrorCount() > 0){
+        if (result.getErrorCount() > 0) {
             System.out.println("出错了");
 
-            for (FieldError error : result.getFieldErrors()){
-                System.out.println(error.getField()+":"+error.getDefaultMessage());
+            for (FieldError error : result.getFieldErrors()) {
+                System.out.println(error.getField() + ":" + error.getDefaultMessage());
             }
+            //若验证出错，则转向定制的错误页面
+            map.put("departments", departmentDao.getDepartments());
+            return "input";
         }
 
         employeeDao.save(employee);
