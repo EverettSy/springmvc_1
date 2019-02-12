@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈〉
  *
  * @author Raven
@@ -28,24 +28,25 @@ import java.util.Map;
 @Repository
 public class DepartmentDao {
 
-    private static Map<Integer, Department> departmentMap = null;
+    private static Map<Integer, Department> departments = null;
+
     static {
-        departmentMap = new HashMap<Integer,Department>();
+        departments = new HashMap<Integer, Department>();
 
-        departmentMap.put(101,new Department(101,"D-AA"));
-        departmentMap.put(102,new Department(102,"D-BB"));
-        departmentMap.put(103,new Department(103,"D-CC"));
-        departmentMap.put(104,new Department(103,"D-DD"));
-        departmentMap.put(105,new Department(103,"D-EE"));
+        departments.put(101, new Department(101, "D-AA"));
+        departments.put(102, new Department(102, "D-BB"));
+        departments.put(103, new Department(103, "D-CC"));
+        departments.put(104, new Department(104, "D-DD"));
+        departments.put(105, new Department(105, "D-EE"));
 
     }
 
-    public Collection<Department> getDepartments(){
-        return departmentMap.values();
+    public Collection<Department> getDepartments() {
+        return departments.values();
     }
 
-    public Department getDepartment(Department id){
-        return departmentMap.get(id);
+    public Department getDepartment(Integer id) {
+        return departments.get(id);
     }
 
 }
