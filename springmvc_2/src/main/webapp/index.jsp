@@ -40,5 +40,16 @@
 
 <br><br>
 <a href="testJson">Test Json</a>
+
+<br><br>
+
+<form action="testHttpMessageConverter" method="post" enctype="multipart/form-data>">
+	File： <input type="file" name="file"/>
+	DeSsc: <input type="text" name="desc"/>
+	<input type="submit" value="Submit"/>
+</form>
+
+<br><br>
+<a href="testResponseEntity">Test ResponseEntity</a>
 </body>
 </html>
