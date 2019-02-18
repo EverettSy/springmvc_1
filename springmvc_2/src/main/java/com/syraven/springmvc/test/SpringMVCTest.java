@@ -13,6 +13,7 @@ package com.syraven.springmvc.test;
 import com.syraven.springmvc.crud.dao.EmployeeDao;
 import com.syraven.springmvc.crud.entiy.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ import javax.servlet.http.HttpSession;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * 〈一句话功能简述〉<br>
@@ -42,8 +44,20 @@ public class SpringMVCTest {
     @Autowired
     private EmployeeDao employeeDao;
 
+    @Autowired
+    private ResourceBundleMessageSource messageSource;
+
+    @RequestMapping("/i18n")
+    public String testI18n(Locale locale) {
+        String val = messageSource.getMessage("il8n.user", null, locale);
+        System.out.println(val);
+        return "i18n";
+    }
+
     /**
+     * 下载 files/abc.txt文件
      * ResponseEntity<T>用于作为处理方法的返回值</>
+     *
      * @param session
      * @return
      * @throws Exception
@@ -65,6 +79,12 @@ public class SpringMVCTest {
         return response;
     }
 
+    /**
+     * 上传文件方法
+     *
+     * @param body
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/testHttpMessageConverter")
     public String testHttpMessageConverter(@RequestBody String body) {

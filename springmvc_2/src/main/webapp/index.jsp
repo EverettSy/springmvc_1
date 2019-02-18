@@ -50,6 +50,21 @@
 </form>
 
 <br><br>
+
 <a href="testResponseEntity">Test ResponseEntity</a>
+
+   <!--
+      关于国际化：
+      1. 在页面上能够根据浏览器语言设置的情况对文本（不是内容），时间，数据进行本地化处理
+      2. 可以在bean 中获取获取国际化资源文件locale 对应的消息
+      3. 可以通过超链接切换 Locale,而不再依赖于浏览器的语言设置情况
+      
+      解决：
+      1、使用JSTL的fmt 标签
+      2、在bean 中注入ResourceBundleMessageSource 的示例，使用其对应的getMessage 方法即可
+      3、配置 LocalResolver 和 LocalChangeInterceptor
+    -->
+<br><br>
+<a href="i18n">I18N PAGE</a>
 </body>
 </html>
