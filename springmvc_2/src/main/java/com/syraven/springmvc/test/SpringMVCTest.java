@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.Date;
@@ -46,6 +48,15 @@ public class SpringMVCTest {
 
     @Autowired
     private ResourceBundleMessageSource messageSource;
+
+    @RequestMapping("/testFileUpload")
+    public String testFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("desc") String desc
+    ) throws IOException {
+        System.out.println("desc: " + desc);
+        System.out.println("OriginalFilename: " + file.getOriginalFilename());
+        System.out.println("InputStream: " + file.getInputStream());
+        return "success";
+    }
 
     @RequestMapping("/i18n")
     public String testI18n(Locale locale) {

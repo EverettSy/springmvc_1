@@ -32,6 +32,14 @@
 	</script>
 </head>
 <body>
+
+<form action="testFileUpload" method="post" enctype="multipart/form-data">
+	File： <input type="file" name="file"/>
+	DeSsc: <input type="text" name="desc"/>
+	<input type="submit" value="Submit"/>
+</form>
+<br><br>
+
 <a href="emps">List emps</a>
 
 <br><br>
