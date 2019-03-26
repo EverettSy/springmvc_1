@@ -41,8 +41,18 @@
           class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
     </bean>
 
-    <!-- 配置LocaleChanceInterceptor-->
+
     <mvc:interceptors>
+        <!-- 配置自定义拦截器-->
+        <bean class="com.syraven.springmvc.interceptos.FirstInterceptor"></bean>
+
+        <!-- 配置拦截器（不）作用的路径-->
+        <mvc:interceptor>
+            <mvc:mapping path="/emps"/>
+            <bean class="com.syraven.springmvc.interceptos.SecondInterceptor"></bean>
+        </mvc:interceptor>
+
+        <!-- 配置LocaleChanceInterceptor-->
         <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"></bean>
     </mvc:interceptors>
 
