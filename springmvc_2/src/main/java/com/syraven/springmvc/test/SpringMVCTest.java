@@ -12,6 +12,8 @@ package com.syraven.springmvc.test;
 
 import com.syraven.springmvc.crud.dao.EmployeeDao;
 import com.syraven.springmvc.crud.entiy.Employee;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.http.HttpHeaders;
@@ -43,11 +45,42 @@ import java.util.Locale;
 @Controller
 public class SpringMVCTest {
 
+    public static final Logger LOGGER = LoggerFactory.getLogger(SpringMVCTest.class);
+
     @Autowired
     private EmployeeDao employeeDao;
 
     @Autowired
     private ResourceBundleMessageSource messageSource;
+
+
+    /*@ExceptionHandler({RuntimeException.class})
+    public ModelAndView handleArithmeticException2(Exception ex){
+        LOGGER.info("[出异常了]："+ex);
+        System.out.println("[出异常了]："+ex);
+        ModelAndView mv = new ModelAndView("error");
+        mv.addObject("exception",ex);
+        return mv;
+    }*/
+    /**
+     * 1. 在@ExceptionHandler 方法的入参中可以加入Exception类型的参数，该参数即对应发生的异常对象
+     * 2. @ExceptionHandler 方法的入参中不能传入Map.若希望把异常信息传到页面上，需要使用ModelAndView 作为返回值
+     * 3. @ExceptionHandler 方法标记的异常有优先级的问题。
+     * 4. @ControllerAdvice 标记的类中查找@ExceptionHandler标记的方法处理异常
+     */
+    /*@ExceptionHandler({ArithmeticException.class})
+    public ModelAndView handleArithmeticException(Exception ex){
+        LOGGER.info("出异常了："+ex);
+       ModelAndView mv = new ModelAndView("error");
+       mv.addObject("exception",ex);
+       return mv;
+    }*/
+
+    @RequestMapping("/testExceptionHandlerResolverExceptionResolver")
+    private String testExceptionHandlerResolverExceptionResolver(@RequestParam("i") int i){
+        LOGGER.info("result: "+(10/i));
+        return "success";
+    }
 
     @RequestMapping("/testFileUpload")
     public String testFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("desc") String desc
