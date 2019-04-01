@@ -15,6 +15,6 @@
 </head>
 <body>
 	
-	<h2>上传成功</h2>
+	<h2>Success Page</h2>
 </body>
 </html>

@@ -50,6 +50,21 @@ public class SpringMVCTest {
     @Autowired
     private ResourceBundleMessageSource messageSource;
 
+    /**
+     * SpringMVC_异常处理_DefaultHandlerExceptionResolver
+     * @return
+     */
+    @RequestMapping(value = "/testDefaultHandlerExceptionResolver",method = RequestMethod.POST)
+    public String testDefaultHandlerExceptionResolver(){
+        System.out.println("DefaultHandlerExceptionResolver....");
+        return "success";
+    }
+
+    /**
+     * SpringMVC_异常处理_ResponseStatusExceptionResolver(状态码)
+     * @param i
+     * @return
+     */
     @ResponseStatus(reason = "测试",value = HttpStatus.NOT_FOUND)
     @RequestMapping("/testResponseStatusExceptionResolver")
     public String testResponseStatusExceptionResolver(@RequestParam("i") int i){
