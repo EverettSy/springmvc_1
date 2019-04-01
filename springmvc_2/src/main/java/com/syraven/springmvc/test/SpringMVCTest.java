@@ -51,6 +51,18 @@ public class SpringMVCTest {
     private ResourceBundleMessageSource messageSource;
 
     /**
+     * SpringMVC_异常处理_SimpleMappingExceptionResolve(在springmvc.xml配置)
+     * @param i
+     * @return
+     */
+    @RequestMapping("/testSimpleMappingExceptionResolver")
+    public String testSimpleMappingExceptionResolver(@RequestParam("i") int i){
+        String [] vals = new String[10];
+        System.out.println(vals[i]);
+        return "success";
+    }
+
+    /**
      * SpringMVC_异常处理_DefaultHandlerExceptionResolver
      * @return
      */
