@@ -77,5 +77,8 @@
 
 <br><br>
 <a href="testExceptionHandlerResolverExceptionResolver?i=10">Test ExceptionHandlerResolverExceptionResolver</a>
+
+<br><br>
+<a href="testResponseStatusExceptionResolver?i=10">Test ResponseStatusExceptionResolver</a>
 </body>
 </html>

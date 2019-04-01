@@ -25,9 +25,9 @@ import org.springframework.web.servlet.ModelAndView;
  * @since 1.0.0
  */
 @ControllerAdvice
-public class HandlerException {
+public class SpringMVCTestExceptionHandler {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(HandlerException.class);
+    public static final Logger LOGGER = LoggerFactory.getLogger(SpringMVCTestExceptionHandler.class);
 
     @ExceptionHandler({ArithmeticException.class})
     public ModelAndView handleArithmeticException(Exception ex){
