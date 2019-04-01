@@ -20,10 +20,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletContext;
@@ -53,6 +50,15 @@ public class SpringMVCTest {
     @Autowired
     private ResourceBundleMessageSource messageSource;
 
+    @ResponseStatus(reason = "测试",value = HttpStatus.NOT_FOUND)
+    @RequestMapping("/testResponseStatusExceptionResolver")
+    public String testResponseStatusExceptionResolver(@RequestParam("i") int i){
+        if (i == 13){
+            throw new UserNameNotMatchPasswordException();
+        }
+        System.out.println("testResponseStatusExceptionResolver....");
+        return "success";
+    }
 
     /*@ExceptionHandler({RuntimeException.class})
     public ModelAndView handleArithmeticException2(Exception ex){
